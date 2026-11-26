@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Skills_Management_Client.Controllers {
 	public class HomeController : Controller {
-		public ActionResult Index() {
-			return View();
+		async public Task<ActionResult> Index() {
+			string json = await API.getSkills();
+			ViewBag.json = json;
+			return View(json);
 		}
 
 		public ActionResult About() {
